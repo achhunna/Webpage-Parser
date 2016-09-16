@@ -1,0 +1,86 @@
+<html>
+<head>
+    <title>Webpage Parser</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script src="js/jquery.tablesorter.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="js/parse.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Webpage Parser</div>
+        <br />
+        <div class="content">
+            <div class="description">
+                <p>You can use <em>Wepage Parser</em> to scrape websites which have common URL with multiple pages. For e.g. careershifters.org lists stories in numbered pages with URL below. </p>
+				<ul>
+					<li>Enter your desired URL below along with page range you want to scrape</li>
+					<li>Indicate <b>HTML Attr</b> (attribute) you want to parse, e.g. div, p, section; for class, prefix with "."; for id, prefix with "#"</li>
+					<li>Keep <b>Output Format</b> to "Raw" for website other than Career Shifter. Single page scraping can also be done by leaving the <b>First Page</b> as blank</li>
+				</ul>
+				<p>The code for the tool is on my <a href="http://github.com/achhunna" target="_blank">GitHub</a>. I appreciate your feedback.</p>
+            </div>
+            <table class="inputForm">
+    			<tr>
+    				<td colspan="3">
+    					<span class="header">Enter URL: </span><input id="urlInput" type="text" size="90" value="http://www.careershifters.org/success-stories?field_type_of_work_tid=All&field_to_tid=All&page=" />
+    				</td>
+    			</tr>
+    			<tr>
+    				<td width="33%">
+                        <span class="header">First Page: </span><input id="startPage" type="text" size="5" value="0" />
+                        <span class="comment">Leave empty for single page</span>
+                    </td>
+    				<td width="33%">
+                        <span class="header">Last Page: </span><input id="endPage" type="text" size="5" value="19" />
+                    </td>
+    				<td width="33%">
+                        <span class="header">HTML Attr: </span><input id="findClass" type="text" size="20" value=".node__title" />
+                        <span class="comment">Prefix "." for class, "#" for id</span>
+                    </td>
+    			</tr>
+    			<tr>
+    				<td>
+    					<span class="header">Output Format </span>
+    					<select id="outputSelect">
+    						<option value="raw">Raw</option>
+    						<option value="careerTable" selected>Career Shifter</option>
+    					</select>
+    				</td>
+    				<td>
+
+    				</td>
+                    <td>
+                        <button id="parseButton" class="parseButton mouseOver">Parse</button>
+                    </td>
+    			</tr>
+            </table>
+
+            <br />
+
+            <div id="loading">
+                <img src="images/loading.gif" />
+            </div>
+
+    		<div id="output">
+    			<table id="outputTable" class="tablesorter">
+    				<thead>
+    					<tr class="tableHeader">
+    						<th class="mouseOver">No</th>
+    						<th class="mouseOver">Old Career</th>
+    						<th class="mouseOver">New Career</th>
+    					</tr>
+    				</thead>
+    				<tbody id="outputTableBody">
+    				</tbody>
+    			</table>
+    		</div>
+            <br /><br />
+        </div>
+    </div>
+    <div class="footer">
+        &copy; 2016 Achhunna. All rights reserved.
+    </div>
+</body>
+</html>
