@@ -53,10 +53,10 @@ $(document).ready(function(){
 
     $("#parseButton").click(function(){
 
-        var url = $("#urlInput").val();
-        var startPage = $("#startPage").val()=="" ? "null" : Number($("#startPage").val());
-        var endPage = Number($("#endPage").val());
-        var findClass = $("#findClass").val();
+        var url = $("#urlInput").text();
+        var startPage = $("#startPage").text()=="" ? "null" : Number($("#startPage").text());
+        var endPage = Number($("#endPage").text());
+        var findClass = $("#findClass").text();
 
         //Restore to original state
         if(optionValue === "careerTable"){
@@ -93,6 +93,7 @@ $(document).ready(function(){
     $("#loading").hide();
 	//$("#outputTable").hide();
 	var originalState = $("#output").clone(); //Copy of the original div
+    console.log(originalState);
 
 });
 
@@ -104,6 +105,11 @@ $(document).ajaxStart(function(){
     //Run functions after ajaxStop
     printArray(parsedArray);
 	if(optionValue === "careerTable"){
-		$("#outputTable").tablesorter();
+        $("#outputTable").DataTable({
+            "paging":   false,
+            "ordering": true,
+            "info":     false,
+            "searching":   false
+        });
 	}
 });
