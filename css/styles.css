@@ -82,8 +82,13 @@ select {
 	text-decoration: none;
     padding-top: 30px;
     padding-bottom: 30px;
-    width: 50%;
+    width: 40%;
 	margin: 10px auto;
+}
+@media screen and (max-width: 480px) {
+    .parseButton {
+        width: 80%;
+    }
 }
 .mouseOver:hover {
 	background-color: #4C9050;
